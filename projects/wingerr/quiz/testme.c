@@ -5,14 +5,19 @@
 
 char inputChar()
 {
-    // TODO: rewrite this function
-    return ' ';
+	char randTestChar = (rand() % 94) + 32;
+    return randTestChar;
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+int i;
+	char input[6];
+
+	for (i = 0; i < 5; i++) {
+		input[i] = (rand() % 16) + 101;
+	}
+    return input;
 }
 
 void testme()
