@@ -916,7 +916,6 @@ int tributeRefactor(int currentPlayer, struct gameState* state, int nextPlayer) 
 		}
 	}
 	return 0;
-
 }
 
 int mineRefactor(int currentPlayer, struct gameState* state, int choice1, int choice2, int handPos) {
