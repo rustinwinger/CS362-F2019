@@ -34,6 +34,22 @@ unittestresults: unittest1 unittest2 unittest3 unittest4 unittest5
 	gcov -b -f dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out
 
+randomtestresults: dominion.o
+	echo "randomtestcard1.c" >> randomtestresults.out
+	gcc -o randomtestcard1 dominion.c rngs.c randomtestcard1.c $(CFLAGS)
+	randomtestcard1 >> rantomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
+
+	echo "randomtestcard2.c" >> randomtestresults.out
+	gcc -o randomtestcard2 dominion.c rngs.c randomtestcard2.c $(CFLAGS)
+	randomtestcard2 >> rantomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
+
+	echo "randomtestcard3.c" >> randomtestresults.out
+	gcc -o randomtestcard3 dominion.c rngs.c randomtestcard3.c $(CFLAGS)
+	randomtestcard3 >> rantomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
+
 testDrawCard: testDrawCard.c dominion.o rngs.o
 	gcc  -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
