@@ -16,6 +16,22 @@ testDrawCard: testDrawCard.c dominion.o rngs.o
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
+randomtestresults: dominion.o
+	echo "randomtestcard1.c" >> randomtestresults.out
+	gcc -o randomtestcard1 dominion.c rngs.c randomtestcard1.c $(CFLAGS)
+	randomtestcard1 >> rantomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
+
+	echo "randomtestcard2.c" >> randomtestresults.out
+	gcc -o randomtestcard2 dominion.c rngs.c randomtestcard2.c $(CFLAGS)
+	randomtestcard2 >> rantomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
+
+	echo "randomtestcard3.c" >> randomtestresults.out
+	gcc -o randomtestcard3 dominion.c rngs.c randomtestcard3.c $(CFLAGS)
+	randomtestcard3 >> rantomtestresults.out
+	gcov dominion.c -b -f >> randomtestresults.out
+
 runtests: testDrawCard 
 	./testDrawCard &> unittestresult.out
 	gcov dominion.c >> unittestresult.out

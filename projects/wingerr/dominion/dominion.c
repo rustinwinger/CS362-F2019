@@ -685,10 +685,10 @@ int getCost(int cardNumber)
 
 int baronRefactor(int currentPlayer, struct gameState* state, int choice1) {
 	//should be ++, added bug to make buys increase by 2
-	state->numBuys+=2;//Increase buys by 1!
+	state->numBuys++;//Increase buys by 1!
 	if (choice1 > 0) { //Boolean true or going to discard an estate
 		//int p should be 0, 1 is added bug
-		int p = 1;//Iterator for hand!
+		int p = 0;//Iterator for hand!
 		int card_not_discarded = 1;//Flag for discard set!
 		while (card_not_discarded) {
 			if (state->hand[currentPlayer][p] == estate) { //Found an estate card!
@@ -746,11 +746,11 @@ int minionRefactor(int currentPlayer, struct gameState* state, int choice1, int 
 	discardCard(handPos, currentPlayer, state, 0);
 
 	//switched choice1 and choice2 for bug
-	if (choice1)
+	if (choice2)
 	{
 		state->coins = state->coins + 2;
 	}
-	else if (choice2)		//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4
+	else if (choice1)		//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4
 	{
 		//discard hand
 		while (numHandCards(state) > 0)
@@ -770,7 +770,7 @@ int minionRefactor(int currentPlayer, struct gameState* state, int choice1, int 
 			if (i != currentPlayer)
 			{
 				//added bug switched > for <
-				if (state->handCount[i] < 4)
+				if (state->handCount[i] > 4)
 				{
 					//discard hand
 					while (state->handCount[i] > 0)
@@ -880,7 +880,7 @@ int tributeRefactor(int currentPlayer, struct gameState* state, int nextPlayer) 
 		if (state->deckCount[nextPlayer] == 0) {
 			for (i = 0; i < state->discardCount[nextPlayer]; i++) {
 				//bug changed nextPlayer to currentPlayer
-				state->deck[currentPlayer][i] = state->discard[nextPlayer][i];//Move to deck
+				state->deck[nextPlayer][i] = state->discard[nextPlayer][i];//Move to deck
 				state->deckCount[nextPlayer]++;
 				state->discard[nextPlayer][i] = -1;
 				state->discardCount[nextPlayer]--;
@@ -912,7 +912,7 @@ int tributeRefactor(int currentPlayer, struct gameState* state, int nextPlayer) 
 			drawCard(currentPlayer, state);
 		}
 		else { //Action Card
-			state->numActions = state->numActions + 0; //bug made +2 +0
+			state->numActions = state->numActions + 2; //bug made +2 +0
 		}
 	}
 	return 0;
