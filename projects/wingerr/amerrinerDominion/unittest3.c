@@ -6,9 +6,9 @@
 #include <assert.h>
 #include "rngs.h"
 
-//minion unit test
+//ambassador unit test
 
-int main() {
+int main(int argc, char* args[]) {
 	int choice1 = 0;
 	int choice2 = 1;
 	int handPos = 0;
@@ -24,23 +24,18 @@ int main() {
 
 	memcpy(&test, &state, sizeof(struct gameState));
 
-	minionEffect(player, &test, choice1, choice2, handPos);
-	if (test.coins = (test.coins + 2){
-		printf("Choice 2 executed properly\n");
-		}
+	ambassadorEffect(choice1, choice2, &test, player, handPos);
+
+	player = 2;
+	int size = state.handCount[player];
+	ambassadorEffect(choice1, choice2, &test, 0, handPos);
+
+	if (state.handCount[player] == (size + 1)) {
+		printf("Even player properly given card\n");
+	}
 	else {
-		printf("Choice 2 not executed properly\n");
+		printf("Even player skipped\n");
 	}
 
-	int cardCount = state->handCount[player];
-		minionEffect(player, &test, choice1, choice2, handPos);
-		if (state->handCount[player] == 4) {
-			printf("Cards discarded correctly\n");
-		}
-		else {
-			printf("Cards not discarded correctly\n");
-		}
-
 	return 0;
-
 }

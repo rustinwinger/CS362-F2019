@@ -16,6 +16,7 @@ int main(int argc, char* args[]) {
 	int seed = 1000;
 	int player = 0;
 	int player2 = 0;
+	int handPos = 0;
 	int i, j;
 	struct gameState state, test;
 	int k[10] = { estate, estate, estate, tribute, mine
@@ -34,7 +35,7 @@ int main(int argc, char* args[]) {
 		test.hand[player][1] = tribute;
 		player2 = whoseTurn(&test);
 
-		tributeEffect(player, &test, player2);
+		tributeEffect(&test, player, player2, handPos);
 
 		if (test.numBuys = (test.numBuys + 1)) {
 			printf("buys are correct\n");
@@ -45,11 +46,11 @@ int main(int argc, char* args[]) {
 
 		test.handCount[player] = 0;
 		test.supplyCount[estate] = 1;
-		tributeEffect(player, &test, player2);
+		tributeEffect(&test, player, player2, handPos);
 
 		int preCoins = test.coins;
 		test.supplyCount[estate] = 1;
-		tributeEffect(player, &test, player2);
+		tributeEffect(&test, player, player2, handPos);
 
 		if (test.coins = preCoins) {
 			printf("Estate card not discarded\n");

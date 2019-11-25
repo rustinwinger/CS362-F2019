@@ -947,7 +947,7 @@ int mineEffect(struct gameState *state, int currentPlayer, int choice1, int choi
 	int r = isTreasureCard(j);
 	int p = isTreasureCard(choice2);
 	//bug, should be if (r == 0) 
-	if (r != 0)
+	if (r == 0)
 	{
 		return -1;
 	}

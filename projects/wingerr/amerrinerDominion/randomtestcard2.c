@@ -33,7 +33,7 @@ int main(int argc, char* args[]) {
 		memcpy(&test, &state, sizeof(struct gameState));
 
 		test.hand[player][1] = estate;
-		minionEffect(player, &test, choice1, choice2, handPos);
+		minionEffect(choice1, choice2, &test, player, handPos);
 
 		if (test.coins = (test.coins + 2)) {
 			printf("Choice 2 executed properly\n");
@@ -42,7 +42,7 @@ int main(int argc, char* args[]) {
 			printf("Choice 2 not executed properly\n");
 		}
 
-		minionEffect(player, &test, choice1, choice2, handPos);
+		minionEffect(choice1, choice2, &test, player, handPos);
 
 		if (state.handCount[player] == 4) {
 			printf("Cards discarded correctly\n");
